@@ -23,11 +23,24 @@ app.use(express.static("frontend"));
 app.get("/poll", function (req, res) {
   // use getMsgs to get messages to send back
   // write code here
+  res.status(500);
+  // .json({
+  //   msg: getMsgs(),
+  // });
 });
 
 app.post("/poll", function (req, res) {
   // add a new message to the server
   // write code here
+  console.log(req);
+  const { user, text } = req.body;
+  msg.push({
+    user,
+    text,
+    time: Date.now(),
+  });
+
+  res.status(200).json({ status: "ok" });
 });
 
 // start the server
